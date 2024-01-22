@@ -14,8 +14,7 @@ public class Entry
 
     {
         ForegroundColor = ConsoleColor.Black;
-        BackgroundColor = ConsoleColor.White;
-        string _promptText = "Please Select one of the following Choice";
+        string _promptText = "You Select one of the following Choice";
         DateTime todaysDate =  DateTime.Today;
         Console.Write(todaysDate); Console.WriteLine(_promptText);
 
