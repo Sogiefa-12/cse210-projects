@@ -4,10 +4,14 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop03 World!");
+        Console.WriteLine("Hello Develop02 World!");
+        Reference r = new Reference("Johns", 3, 16);
+        Console.WriteLine(r.ToString());
+        Word w = new Word("please wait...");
+        Console.WriteLine(w.GetDisplayText("yes"));
+        
+        
+        
 
-        Scripture s = new Scripture();
-        Console.WriteLine(s.GetDisplayText());
-
-    }
+    }
 }

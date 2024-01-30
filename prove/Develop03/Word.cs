@@ -1,36 +1,57 @@
 using System;
+
+    public class Word
+{
+        public string word { get; set; }
+        public bool IsHidden { get; set; }
+
+        public Word(string _word)
+{
+            word = _word;
+            IsHidden = false;
+        }
+
+        public string GetDisplayText(string text)
+    {
+        word = "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life";
+        return word;
+    }
+
+    
+}
+
+
+
+/****
 public class Word
 {
     string _text;
-    string _text2;
     bool _isHidden;
 
-    public Word(string text, string _text2)
+    public Word(string text)
     {
-        _text = "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life";
-
-        _text2 ="Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight";
+        _text =text;
     }
 
     public void Hide()
     {
-        Console.WriteLine(_isHidden);
-        _text = "For God so loved _ _ _ _ _, that he gave his only _ _ _ _ _ _, that whosoever believeth in him should not perish, but have _ _ _ _ _ _ _ _ _ _ _";
+        _text = "For God so _ _ _ _ world, that he gave his only begotten Son, that whosoever _ _ _ _ _ _ in him should not perish, but have _ _ _ _ _ _ _ _life";
         Console.WriteLine(_text);
-
-        _text2 = "_ _ _ _ _ _ in the LORD with all your heart and _ _ _ _ _ _ on your own undertanding; in all _ _ _ _ _ _ _ _ _ _ _ to him, and he will make your paths _ _ _ _ _ _ _ _";
-        Console.WriteLine(_text2);
-  
     }
 
     public void Show()
     {
-        Console.WriteLine(_text);
-        Console.WriteLine(_text2);
+        _text = "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life";
     }
 
-    public string GetDisplayText()
+    public bool IsHidden()
     {
-        return _text;
+        return _isHidden;
     }
+
+    public string GetDisplayText(string text)
+    {
+        return text;
+    }
 }
+***/
