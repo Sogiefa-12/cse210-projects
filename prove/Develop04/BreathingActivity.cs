@@ -23,13 +23,18 @@ class BreathingActivity: Activity
 
         for (int i = 0; i < duration; i++)
         {
-            Console.Write(i);
+            
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
             Console.WriteLine("Breathe in.....", i);
+            Console.Write(i);
             System.Threading.Thread.Sleep(1000);
+            Console.Clear();
             Console.WriteLine("Breathe out.....", i);
+            Console.Write(i);
             System.Threading.Thread.Sleep(1000);
+            Console.Clear();
+            
     
 
         }
