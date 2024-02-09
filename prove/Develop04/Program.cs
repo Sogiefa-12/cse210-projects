@@ -7,14 +7,18 @@ class Program
         Console.WriteLine("Hello Develop04 World!");
         Activity a = new Activity("John", "BreathingActivity", 30);
         a.DisplayStartingMessage();
+        Thread.Sleep(10000);
+        Console.Clear();;
 
-        BreathingActivity b = new BreathingActivity();
-        Console.WriteLine(b.Run());
-
+        BreathingActivity b = new BreathingActivity("John", "BreathingActivity",30);
+        b.Run();
 
         ReflectingActivity r = new ReflectingActivity();
-        Console.WriteLine(r.Run());
-        Console.WriteLine(r.GetRandomPrompt());
+        r.Run();
+        r.DisplayPrompt();
+        r.DisplayQuestion();
+
+
 
     }
 }
