@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 class BreathingActivity: Activity
 
 {
@@ -17,17 +18,19 @@ class BreathingActivity: Activity
         Console.Write("Please enter a number: ");
         string input = Console.ReadLine();
         int duration = int.Parse(input);
-        Console.WriteLine("Get ready to Breath for ", duration);
+        Console.WriteLine($"Get ready to Breath for  {duration} seconds");
 
 
         for (int i = 0; i < duration; i++)
         {
-            Console.Write(".");
+            Console.Write(i);
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
             Console.WriteLine("Breathe in.....", i);
             System.Threading.Thread.Sleep(1000);
-            Console.Clear();
+            Console.WriteLine("Breathe out.....", i);
+            System.Threading.Thread.Sleep(1000);
+    
 
         }
 

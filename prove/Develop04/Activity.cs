@@ -36,21 +36,30 @@ class Activity
             Console.Write("Enter your choice: ");
             int choice = int.Parse(Console.ReadLine());
 
-            Activity activity = null;
+            Activity activity;
 
-            switch (choice)
+            if (choice ==1)
             {
-                case 1:
-                    activity  = new BreathingActivity("John", "Breathing", 30);
-                    break;
-                case 2:
-                    activity = new ReflectingActivity();
-                    break;
-                case 3:
-                    activity  = new ListingActivity();
-                    break;
-                default:Console.WriteLine("Quiting Program");
+                activity  = new BreathingActivity("John", "Breathing", 30);
                 break;
+            }
+            else if (choice == 2)
+            {
+                activity = new ReflectingActivity();
+                break;
+            }
+            else if (choice == 3)
+            {
+                activity = new ListingActivity();
+                break;
+            }
+            
+            else if (choice == 4)
+            {
+                Console.WriteLine("Quiting Program");
+                break;
+            }
+            break;
             }  
 
     }
@@ -71,5 +80,5 @@ class Activity
 
     }***/
 
-    }
+    
 }
