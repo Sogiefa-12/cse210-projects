@@ -26,18 +26,24 @@ class BreathingActivity: Activity
             
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
-            Console.WriteLine("Breathe in.....", i);
-            Console.Write(i);
+            Console.WriteLine("Breathe in.....",i);
             System.Threading.Thread.Sleep(1000);
-            Console.Clear();
-            Console.WriteLine("Breathe out.....", i);
-            Console.Write(i);
-            System.Threading.Thread.Sleep(1000);
-            Console.Clear();
             
-    
+            Console.WriteLine(" ");
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("Now Breathe out.......\b \b",i);
+            Console.WriteLine("  ");
+            Console.Write(i);
+            System.Threading.Thread.Sleep(1000);
+            Console.Clear();
 
+            System.Threading.Thread.Sleep(1000);
+            
+            
         }
+        Console.WriteLine("Well Done...\b \b");
+
+        Console.WriteLine($"You have completed {duration} Seconds of Breathing Activity");
 
 
     }

@@ -21,7 +21,7 @@ class Activity
         _duration = 0;
 
     }
-
+/**
     public void DisplayStartingMessage()
     {
          while (true)
@@ -64,7 +64,7 @@ class Activity
 
     }
 
-/***
+
     public void DisplayEndingMessage()
     {
 
