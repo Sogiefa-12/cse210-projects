@@ -21,6 +21,7 @@ class Activity
         _duration = 0;
 
     }
+}
 /**
     public void DisplayStartingMessage()
     {
@@ -60,25 +61,7 @@ class Activity
                 break;
             }
             break;
-            }  
-
-    }
-
-
-    public void DisplayEndingMessage()
-    {
-
-    }
-
-    public void ShowSpinner(int seconds)
-    {
-
-    }
-
-    public void ShowCountDown(int seconds)
-    {
-
-    }***/
+            }
 
     
 }
