@@ -7,7 +7,6 @@ class ListingActivity:Activity
     int _count;
     List<string> _prompts = new List<string>();
     List<string> userInputList = new List<string>();
-    Stopwatch stopwatch = new Stopwatch();
     Random random = new Random();
   
 
@@ -30,8 +29,7 @@ class ListingActivity:Activity
         "who are people that you appreciate?",
         "What are your personal achievement you are proud of?",
         "who are people that you have helped this week?",
-        "Do have a personal relationship with Christ?",
-        "who are some of your personal heroes?"
+        "Do have a personal relationship with Christ?"
     
         };
     }
