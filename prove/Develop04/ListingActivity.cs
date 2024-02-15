@@ -8,6 +8,7 @@ class ListingActivity:Activity
     List<string> _prompts = new List<string>();
     List<string> userInputList = new List<string>();
     Stopwatch stopwatch = new Stopwatch();
+    Random random = new Random();
   
 
     public ListingActivity(): base()
@@ -20,16 +21,16 @@ class ListingActivity:Activity
         "what are personal strengths yours?",
         "who are people that you have helped this week?",
         "when have you felt the Holyghost this month?",
-        "who are some of your personal heroes?",
-        "who are people that you appreciate?",
-        "what are personal strengths yours?",
-        "who are people that you have helped this week?",
+        "what is your most memorable day on earth?",
+        "Do you have a personal relationship with Holy Gost?",
+        "who is the Holy Ghost to You?",
+        "How often do you tell people about Christ?",
         "when have you felt the Holyghost this month?",
         "who are some of your personal heroes?",
         "who are people that you appreciate?",
-        "what are personal strengths yours?",
+        "What are your personal achievement you are proud of?",
         "who are people that you have helped this week?",
-        "when have you felt the Holyghost this month?",
+        "Do have a personal relationship with Christ?",
         "who are some of your personal heroes?"
     
         };
@@ -59,59 +60,48 @@ class ListingActivity:Activity
 
     public void GetRandomPrompt()
     {
-        Console.WriteLine(_prompts[_count]);
-        _count++;
+        foreach (var item in  _prompts)
+        {
+            Console.WriteLine(item);
+        }
+
+        while (_prompts.Count > 0)
+        {
+            int index = random.Next(_prompts.Count);
+            Console.WriteLine(_prompts[index]);
+            _prompts.RemoveAt(index);
+        }
+     //   Console.WriteLine(_prompts[_count]);
+       // _count++;
     } 
 
 
 
     public void GetListFromUser()
     {
-        /**
-        Console.Write("What do have in mind to List: ");
-        string userInput = Console.ReadLine();
-        _userList.Add(userInput);
-        Console.WriteLine("Below is Your List:");
-        foreach (var item in _userList)
-        {
-            Console.WriteLine(item);
-        }
-        return _userList.ToString();
-        **/
+       
         Console.WriteLine("What do have in mind to List: ");
-        Console.Write("Enter the duration in seconds: ");
-        int duration = int.Parse(Console.ReadLine());
+        //int duration = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Enter items. Type '0' to stop entering items:");
+         Console.WriteLine("Enter your responses one at a time. Type 'DONE' when you are finished.");
 
-
-        string input = "";
-        while (true)
+        string input;
+        do
         {
-            stopwatch.Start();
             input = Console.ReadLine();
-            stopwatch.Stop();
+            userInputList.Add(input);
 
-            if (input == "0" || stopwatch.ElapsedMilliseconds > TimeSpan.FromSeconds(duration).Milliseconds)
+            if (input.ToLower() == "done")
             {
                 break;
             }
+        } while (true);
 
-            userInputList.Add(input);
-        }
+        Console.WriteLine("\nYour responses:");
 
-        Console.WriteLine("\nItems entered:\n");
-        foreach (string item in userInputList)
+        foreach (var response in userInputList)
         {
-           
-            
-            Console.WriteLine(item);
+            Console.WriteLine(response);
         }
-
-        return userInputList.ToString();
-
-        
     }
-
-    
 }
