@@ -4,7 +4,7 @@ class Program
 {
     static void Main()
 {
-        Address address1 = new Address("123 Main St", "City", "State", "USA");
+        Address address1 = new Address("547 Main St", "Sacramento", "State", "California");
         Address address2 = new Address("456 Oak Ave", "Town", "Province", "Canada");
 
         Customer customer1 = new Customer("Sarah Ogiefa", address1);
@@ -12,9 +12,9 @@ class Program
 
         List<Product> products = new List<Product>
         {
-            new Product("Product 1", "P1", 3.0, 2),
-            new Product("Product 2", "P2", 5.0, 1),
-            new Product("Product 3", "P3", 7.0, 3),
+            new Product("Product 1", "Nike Shoes", 3.0, 2),
+            new Product("Product 2", "Reebok Shoes", 5.0, 1),
+            new Product("Product 3", "Addidas Shoes", 7.0, 3),
         };
 
         Order order1 = new Order(customer1, products);
