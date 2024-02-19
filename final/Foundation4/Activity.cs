@@ -1,16 +1,18 @@
 using System;
 using System.Collections.Generic;
 
+using System;
+using System.Collections.Generic;
+
 abstract class Activity
 {
-    private DateTime date;
-    private int duration;
+    public DateTime date;
+    public int duration;
 
     protected Activity(DateTime date, int duration)
     {
         this.date = date;
         this.duration = duration;
-
     }
 
     public abstract double GetDistance();
@@ -19,7 +21,13 @@ abstract class Activity
 
     public string GetSummary()
     {
-        return $"";
+        return $"{date.ToShortDateString()} {ToString()} ({duration} min) - Distance {GetDistance()} miles, Speed {GetSpeed()} mph, Pace: {GetPace()} min per mile";
     }
-
 }
+
+
+
+
+
+
+

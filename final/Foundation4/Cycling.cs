@@ -7,7 +7,10 @@ class Cycling : Activity
     private double duration;
     public Cycling(DateTime date, int duration, double speed) : base(date, duration)
     {
-    
+        this.speed = speed;
+        this.duration = duration;
+        this.date = date;
+
     }
 
     public override double GetDistance()

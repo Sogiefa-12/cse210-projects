@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 class Address
 {
@@ -10,20 +10,14 @@ class Address
     private string country;
 
     public Address(string streetAddress, string city, string stateProvince, string country)
-    {
+{
         this.streetAddress = streetAddress;
         this.city = city;
         this.stateProvince = stateProvince;
         this.country = country;
     }
 
-    public bool IsUsAddress()
-    {
-        return country == "USA";
-    }
+    public bool IsInUSA() => country.Equals("USA", StringComparison.OrdinalIgnoreCase);
 
-    public string GetFullAddress()
-    {
-        return $"";
-    }
+    public string GetFullAddress() => $"{streetAddress}\n{city}, {stateProvince} {country}";
 }

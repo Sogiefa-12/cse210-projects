@@ -1,25 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 class Product
 {
-    private string name;
-    private string productId;
-    private decimal price;
-    private int quantity;
+    public string name;
+    public string id;
+    public double price;
+    public int quantity;
 
-    public Product(string name, string productId, decimal price, int quantity)
+    public Product(string name, string id, double price, int quantity)
     {
         this.name = name;
-        this.productId = productId;
+        this.id = id;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public decimal GetTotalCost()   
-    {
-        return price * quantity;
-    }
-
-    
+    public double GetTotalCost() => price * quantity;
 }

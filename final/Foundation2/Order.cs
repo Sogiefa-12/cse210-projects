@@ -1,28 +1,33 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 class Order
 {
-    private List<Product> products;
+    public List<Product> products;
     private Customer customer;
-    private bool isInUSA;
 
-    public Order(List<Product> products, Customer customer)
-    {
-        this.products = products;
+    public Order(Customer customer, List<Product> products)
+{
         this.customer = customer;
-        isInUSA = customer.IsInUSA();
+        this.products = products;
     }
 
-    public decimal GetTotalPrice()
-    {
-        return 0;
+    public double GetTotalPrice()
+{
+        double totalCost = products.Sum(p => p.GetTotalCost());
+
+        bool isInUSA = customer.LivesInUSA();
+
+        double shippingCost = isInUSA ? 5.0 : 35.0;
+
+        return totalCost + shippingCost;
     }
 
     public string GetPackingLabel()
-    {
-        return "";
+{
+        return string.Join(Environment.NewLine, products.Select(p => $"{p.name} - {p.id}"));
     }
 
-
+    public string GetShippingLabel() => $"{customer.name}\n{customer.address.GetFullAddress()}";
 }

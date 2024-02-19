@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 
-class Address 
+class Address
 {
     private string streetAddress;
     private string city;
@@ -9,12 +8,17 @@ class Address
     private string country;
 
     public Address(string streetAddress, string city, string stateProvince, string country)
-    {
+{
         this.streetAddress = streetAddress;
         this.city = city;
         this.stateProvince = stateProvince;
         this.country = country;
     }
 
-
+    public string GetFullAddress() => $"{streetAddress}\n{city}, {stateProvince} {country}";
 }
+
+
+
+
+
