@@ -1,24 +1,29 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
-using static System.Console;
+
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
 public class Entry
 {
-    string _date;
-    string _promptText;
-    string _entryText;
+    public DateTime Date { get; set; }
+    public List<string> Prompts { get; set; }
+    public List<string> Responses { get; set; }
 
-    public void Display()
-
-    {
-        ForegroundColor = ConsoleColor.Black;
-        string _promptText = "You Select one of the following Choice";
-        DateTime todaysDate =  DateTime.Today;
-        Console.Write(todaysDate); Console.WriteLine(_promptText);
-
-
+    public Entry(DateTime date)
+{
+        Date = date;
+        Prompts = new List<string>();
+        Responses = new List<string>();
     }
 
+    public override string ToString()
+{
+        string output = $"Date: {Date}\n";
+        for (int i = 0; i < Prompts.Count; i++)
+        {
+            output += $"Prompt: {Prompts[i]}\nResponse: {Responses[i]}\n";
+        }
+        return output + "\n";
+    }
 }

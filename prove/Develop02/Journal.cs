@@ -1,102 +1,101 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
-using static System.Console;
 using System.IO;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+
 
 public class Journal
 {
-    public List<Entry>_entries = new List<Entry>();
+    private List<Entry> entries;
 
-    public string JournalFIle = "MyJournal.txt";
-    
-
-    public void AddEntry ()
-    {
-        ForegroundColor = ConsoleColor.Black;
-        WriteLine("\n What would You like to add: ");
-        Entry entry = new Entry();
-        entry.Display();
-        ForegroundColor = ConsoleColor.DarkMagenta;
-        string newline = ReadLine();
-        WriteLine("The Journal has been modified");
-        WaitForkey();
-
+    public Journal()
+{
+        entries = new List<Entry>();
     }
 
-    public void DisplayAll ()
-    
-    {
-        //Entry entry = new Entry();
-        PromptGenerator prompter  = new PromptGenerator();
-        
-        DisplayIntro();
-        CreateJournalFile();
-        LoadFromFile();
-        AddEntry();
-        ClearFile();
-        LoadFromFile();
-        //entry.Display();
-        prompter.promptGenerator();
-        DisplayOutro();
+    public void WriteNewEntry()
+{
+        DateTime date = DateTime.Now;
+        Entry newEntry = new Entry(date);
+
+        foreach (var prompt in GetAllPrompts())
+{
+            Console.WriteLine(prompt);
+            string response = Console.ReadLine();
+            newEntry.Prompts.Add(prompt);
+            newEntry.Responses.Add(response);
+        }
+
+        entries.Add(newEntry);
     }
 
-    public void DisplayIntro()
-    {
+    private IEnumerable<string> GetAllPrompts()
+{
+        string[] prompts = {
+            "Who was the most interesting person I interacted with today?",
+            "What was the best part of my day?",
+            "How did I see the hand of the Lord in my life today?",
+            "What was the strongest emotion I felt today?",
+            "If I had one thing I could do over today, what would it be?"
+};
 
-        ForegroundColor = ConsoleColor.Black;
-        BackgroundColor = ConsoleColor.White;
-        Clear();
-        WriteLine("Welcome to the Best Journal App");
+        return prompts;
     }
 
-    public void WaitForkey()
-    {
-        ForegroundColor = ConsoleColor.DarkGray;
-        WriteLine("\n Press any Key>>>");
-    
-    }
-
-    public void DisplayOutro()
-    {
-        WriteLine("Thanks for Using the Journal");
-        WaitForkey();
-    }
-
-    // Check if file exist, and if doest not create one
-    private void CreateJournalFile()
-    {
-        if (!File.Exists(JournalFIle))
+    public void DisplayEntries()
+{
+        foreach (var entry in entries)
         {
-            File.CreateText(JournalFIle);
+            Console.Write(entry.ToString());
         }
     }
 
-    public void SaveToFile (string file)
-    {
-        
+    public void SaveEntriesToFile(string filename)
+{
+        using (StreamWriter writer = File.CreateText(filename))
+        {
+            foreach (var entry in entries)
+            {
+                writer.WriteLine(entry.ToString());
+            }
+        }
     }
+public void LoadEntriesFromFile(string filename)
+{
+    entries.Clear();
 
-    public void LoadFromFile ()
+    if (File.Exists(filename))
     {
-        ForegroundColor = ConsoleColor.DarkMagenta;
-        string journalText =  File.ReadAllText(JournalFIle);
-        WriteLine("\n=== Journal Contents ====: ");
-        WriteLine(journalText);
-        WriteLine("===========================");
-        WaitForkey();
-    }
+        using (StreamReader reader = File.OpenText(filename))
+        {
+            string entryText;
+            while ((entryText = reader.ReadLine()) != null)
+            {
+                Entry loadedEntry = new Entry(DateTime.Now);
 
-    private void ClearFile() 
+                string[] lines = entryText.Split(new string[] { "\n" }, StringSplitOptions.None);
+                for (int i = 0; i < lines.Length; i += 2)
+                {
+                    if (i == 0)
+                    {
+                        DateTime entryDate;
+                        if (DateTime.TryParse(lines[i], out entryDate))
+                        {
+                            loadedEntry.Date = entryDate;
+                        }
+                    }
+                    else
     {
-        ForegroundColor = ConsoleColor.Black;
-        File.WriteAllText(JournalFIle, "");
-        WriteLine("\n Journal cleared!");
-        WaitForkey();
+                        loadedEntry.Prompts.Add(lines[i]);
+                        if (i + 1 < lines.Length)
+                        {
+                            loadedEntry.Responses.Add(lines[i + 1]);
+                        }
+                    }
+                }
+                entries.Add(loadedEntry);
+            }
+        }
     }
-
 }
-
+}

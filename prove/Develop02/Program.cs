@@ -1,30 +1,54 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
-class Program
+using System;
+
+namespace PersonalJournal
 {
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Hello Develop02 World!");
-        //Console.WriteLine("Welcome To the Journal Program!");
-        //Console.WriteLine("Please Select one of the following Choice");
-        Journal journal = new Journal();
-        
+    class Program
+{
+        static void Main(string[] args)
+{
+            Journal journal = new Journal();
 
-        //List<string> _prompts = new List<string>{ "Write", "Display", "Load", "Save", "Quit" };
+            while (true)
+            {
+                Console.WriteLine("\n--- Personal Journal ---");
+                Console.WriteLine("1. Write New Entry");
+                Console.WriteLine("2. Display Entries");
+                Console.WriteLine("3. Save Entries to File");
+                Console.WriteLine("4. Load Entries from File");
+                Console.WriteLine("5. Exit");
 
-        //foreach(string option in _prompts)
-        //{
-          //Console.Write( $"{_prompts.IndexOf(option)}. "); Console.WriteLine(option);
-        //}
+                Console.Write("\nEnter your choice: ");
+                string choice = Console.ReadLine();
 
-        //Console.WriteLine("What will You like to do? ");
-
-
-        Entry entry = new Entry();
-        //entry.Display();
-        PromptGenerator prompt = new PromptGenerator();
-
-        journal.DisplayAll();
-        
+                switch (choice)
+                {
+                    case "1":
+                        journal.WriteNewEntry();
+                        break;
+                    case "2":
+                        journal.DisplayEntries();
+                        break;
+                    case "3":
+                        Console.Write("Enter the filename: ");
+                        string filename = Console.ReadLine();
+                        journal.SaveEntriesToFile(filename);
+                        break;
+                    case "4":
+                        Console.Write("Enter the filename: ");
+                        filename = Console.ReadLine();
+                        journal.LoadEntriesFromFile(filename);
+                        break;
+                    case "5":
+                        return;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
+            }
+        }
     }
 }
